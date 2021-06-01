@@ -1,0 +1,9 @@
+#header {
+    height: auto;
+    width: 100%;
+    max-height: 275px;
+    max-width: 100%;
+    /* border-right: 2px ridge #444444 !important;
+    border-left: 2px ridge #444444 !important; */
+    /* border-bottom: 2px ridge #6d6d6d !important; */
+}
