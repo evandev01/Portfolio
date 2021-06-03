@@ -44,6 +44,7 @@ const Contact = () => {
     await API.sendEmail(data)
       .then(response => {
         console.log(response);
+        console.log(data);
         if (response.data.status === 'success') {
           alert(
             'Message Sent!\nPlease allow 24hrs for a response.\nThank you for visting evanDev.com and have a great day!'
