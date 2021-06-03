@@ -46,10 +46,10 @@ const Contact = () => {
         console.log(response);
         if (response.data.status === 'success') {
           alert(
-            'text Sent!\nPlease allow 24hrs for a response.\nThank you for visting evanDev.com and have a great day!'
+            'Message Sent!\nPlease allow 24hrs for a response.\nThank you for visting evanDev.com and have a great day!'
           );
         } else if (response.data.status === 'fail') {
-          alert('text failed to send.');
+          alert('Message failed to send.');
         }
       })
       .then(() => {
