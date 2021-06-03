@@ -12,8 +12,8 @@ router.use('/api/contact', email);
 router.use('/api', healthCheckRoute);
 
 // If no API routes are hit, send confirmation
-router.use(function (req, res) {
-    res.json({ "Response": "Incorrect Url" });
-  });
+// router.use(function (req, res) {
+//   res.json({ Response: 'Incorrect Url' });
+// });
 
 module.exports = router;

@@ -4,7 +4,7 @@ require('dotenv').config();
 
 var transporter = nodemailer.createTransport({
   host: process.env.HOST,
-  port: process.env.PORT,
+  port: process.env.MAIL_PORT,
   auth: {
     user: process.env.USER,
     pass: process.env.PASS
@@ -17,29 +17,37 @@ transporter.verify((error, success) => {
   } else {
     console.log('Server is ready to take messages');
     console.log('this is the transport object:');
+    console.log(
+      process.env.HOST,
+      process.env.MAIL_PORT,
+      process.env.USER,
+      process.env.PASS
+    );
   }
 });
 
 // Mail POST request
-router.post('/send', (req, res) => {
+router.post('/send', async (req, res) => {
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const email = req.body.email;
   const occupation = req.body.occupation;
   const subject = req.body.subject;
-  const message = req.body.message;
+  const text = req.body.text;
   const content = `
       firstName: ${firstName} \n 
       lastName: ${lastName} \n
       email: ${email} \n 
       occupation: ${occupation} \n
-      subject: ${subject}
-      message: ${message} `;
+      subject: ${subject} \n
+      text: ${text} `;
 
   // Contact email object
   const mailOptions = {
-    from: `${firstName}${lastName}<${email}>`,
-    to: process.env.USER,
+    from: `${firstName}${' '}${lastName}<${email}>`,
+    to: 'evanbero@evandev.com',
+    email: `${email}`,
+    occupation: `${occupation}`,
     subject: subject,
     text: content
   };
@@ -48,19 +56,20 @@ router.post('/send', (req, res) => {
   console.log(mailOptions);
 
   // Function to SEND EMAIL to Mailtrap inbox
-  transporter.sendMail(mailOptions, (err, data) => {
+  await transporter.sendMail(mailOptions, (err, data) => {
     if (err) {
       res.json({
-        status: 'fail'
+        status: 'fail',
+        error: err
       });
       console.log('status:fail -- error:');
       console.log(err);
     } else {
       res.json({
-        status: 'success'
+        status: 'success',
+        data: mailOptions
       });
       console.log('message sent!');
-      console.log(data);
     }
   });
 });

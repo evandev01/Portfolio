@@ -1,10 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import Home from './pages/Home';
-
+import About from './components/About/About';
+import Contact from './components/Contact/Contact';
+import Home from './components/Home/Home';
 
 function App() {
   return (
@@ -15,28 +14,10 @@ function App() {
         <Route path='/contact' exact component={Contact} />
       </div>
     </Router>
-  )
-};
+  );
+}
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // {/* <Header background={headerImage} /> */}
 
@@ -63,5 +44,6 @@ export default App;
 //   backgroundImage: 'url(' + mainImage + ')'
 // };
 
-
-{/* <div className='mainDiv' style={divStyle}></div> */ }
+{
+  /* <div className='mainDiv' style={divStyle}></div> */
+}
