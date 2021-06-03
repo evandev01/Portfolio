@@ -18,32 +18,3 @@ function App() {
 }
 
 export default App;
-
-// {/* <Header background={headerImage} /> */}
-
-// const [headerImage, setHeaderImage] = useState();
-// const [mainImage, setMainImage] = useState();
-// // const [navState, setNavState] = useState(false);
-// const currentLocation = (window.location.pathname);
-
-// useEffect(() => {
-//   handleChange();
-// });
-
-// function handleChange() {
-//   if (currentLocation === '/') {
-//     setMainImage(homeImage);
-//     // } else if (currentLocation === '/about') {
-//     //   setMainImage(aboutImage);
-//   } else if (currentLocation === '/contact') {
-//     setMainImage(contactImage);
-//   }
-// };
-
-// const divStyle = {
-//   backgroundImage: 'url(' + mainImage + ')'
-// };
-
-{
-  /* <div className='mainDiv' style={divStyle}></div> */
-}
