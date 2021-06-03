@@ -7,6 +7,3 @@ const API = {
 };
 
 export default API;
-
-// For local send
-// http://localhost:3001/api/contact/send
