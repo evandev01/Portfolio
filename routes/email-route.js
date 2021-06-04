@@ -5,7 +5,6 @@ require('dotenv').config();
 var transporter = nodemailer.createTransport({
   host: process.env.HOST,
   port: process.env.PORT,
-  secure: true,
   auth: {
     user: process.env.USER,
     pass: process.env.PASS
@@ -17,13 +16,6 @@ transporter.verify((error, success) => {
     console.log(error);
   } else {
     console.log('Server is ready to take messages');
-    // console.log('this is the transport object:');
-    // console.log(
-    //   process.env.HOST,
-    //   process.env.PORT,
-    //   process.env.USER,
-    //   process.env.PASS
-    // );
   }
 });
 
@@ -45,10 +37,8 @@ router.post('/send', async (req, res) => {
 
   // Contact email object
   const mailOptions = {
-    from: `${firstName}${' '}${lastName}<evanbero@evandev.com>`,
+    from: 'evanbero@evandev.com',
     to: 'evanbero@evandev.com',
-    email: `${email}`,
-    occupation: `${occupation}`,
     subject: subject,
     text: content
   };
