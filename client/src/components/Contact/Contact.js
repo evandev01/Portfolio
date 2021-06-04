@@ -46,6 +46,9 @@ const Contact = () => {
         console.log(response);
         console.log(data);
         resetForm();
+        alert(
+          'Message Sent!\nPlease allow 24hrs for a response.\nThank you for visting evanDev.com and have a great day!'
+        );
         if (response.data.status === 'success') {
           alert(
             'Message Sent!\nPlease allow 24hrs for a response.\nThank you for visting evanDev.com and have a great day!'
