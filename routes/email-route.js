@@ -37,7 +37,7 @@ router.post('/send', async (req, res) => {
 
   // Contact email object
   const mailOptions = {
-    from: 'evanbero@evandev.com',
+    from: `${firstName}${' '}${lastName} <evanbero@evandev.com>`,
     to: 'evanbero@evandev.com',
     subject: subject,
     text: content
