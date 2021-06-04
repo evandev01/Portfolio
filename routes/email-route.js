@@ -1,13 +1,15 @@
 const router = require('express').Router();
 const nodemailer = require('nodemailer');
+const sgTransport = require('nodemailer-sendgrid-transport');
+
 require('dotenv').config();
 
 var transporter = nodemailer.createTransport({
   host: process.env.HOST,
   port: process.env.PORT,
   auth: {
-    user: process.env.USER,
-    pass: process.env.PASS
+    api_user: process.env.USER,
+    api_key: process.env.PASS
   }
 });
 
@@ -37,7 +39,7 @@ router.post('/send', async (req, res) => {
 
   // Contact email object
   const mailOptions = {
-    from: `${firstName}${' '}${lastName} <evanbero@evandev.com>`,
+    from: `${firstName}${' '}${lastName}${' '}<${email}>`,
     to: 'evanbero@evandev.com',
     subject: subject,
     text: content
@@ -61,6 +63,7 @@ router.post('/send', async (req, res) => {
         data: mailOptions
       });
       console.log('message sent!');
+      console.log(res);
     }
   });
 });
