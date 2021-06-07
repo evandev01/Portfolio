@@ -165,6 +165,4 @@ const Contact = () => {
   );
 };
 
-// test save
-
 export default Contact;

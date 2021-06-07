@@ -1,25 +1,9 @@
-const router = require('express').Router();
-const nodemailer = require('nodemailer');
-const sgTransport = require('nodemailer-sendgrid-transport');
-
 require('dotenv').config();
+const router = require('express').Router();
 
-var transporter = nodemailer.createTransport({
-  host: process.env.HOST,
-  port: process.env.PORT,
-  auth: {
-    api_user: process.env.USER,
-    api_key: process.env.PASS
-  }
-});
-
-transporter.verify((error, success) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Server is ready to take messages');
-  }
-});
+// SendGrid
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // Mail POST request
 router.post('/send', async (req, res) => {
@@ -38,34 +22,33 @@ router.post('/send', async (req, res) => {
       text: ${text} `;
 
   // Contact email object
-  const mailOptions = {
-    from: `${firstName}${' '}${lastName}${' '}<${email}>`,
+  const mailObject = {
+    from: 'evanbero@evandev.com',
     to: 'evanbero@evandev.com',
     subject: subject,
     text: content
   };
 
   console.log('this is the mail object sent:');
-  console.log(mailOptions);
+  console.log(mailObject);
 
-  // Function to SEND EMAIL to Mailtrap inbox
-  await transporter.sendMail(mailOptions, (err, data) => {
-    if (err) {
-      res.json({
-        status: 'fail',
-        error: err
-      });
-      console.log('status:fail -- error:');
-      console.log(err);
-    } else {
+  // Function to SEND EMAIL to SendGrid
+  await sgMail
+    .send(mailObject)
+    .then(() => {
       res.json({
         status: 'success',
         data: mailOptions
       });
-      console.log('message sent!');
-      console.log(res);
-    }
-  });
+      console.log('Message sent: ' + info.response);
+    })
+    .catch(err => {
+      res.json({
+        status: 'fail',
+        error: err
+      });
+      console.log('status:fail -- error: ' + err);
+    });
 });
 
 module.exports = router;
