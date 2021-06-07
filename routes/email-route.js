@@ -6,8 +6,6 @@ const nodemailer = require('nodemailer');
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 var transporter = nodemailer.createTransport({
-  host: process.env.HOST,
-  port: process.env.PORT,
   service: 'SendGrid',
   auth: {
     api_user: process.env.USERNAME,
@@ -48,7 +46,7 @@ router.post('/send', async (req, res) => {
     .then(() => {
       res.json({
         status: 'success',
-        data: mailOptions
+        data: mailObject
       });
       console.log('Message sent: ' + info.response);
     })
