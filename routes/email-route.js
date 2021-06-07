@@ -1,17 +1,18 @@
 require('dotenv').config();
 const router = require('express').Router();
 const nodemailer = require('nodemailer');
+const sgTransport = require('nodemailer-sendgrid-transport');
 // SendGrid
 // const sgMail = require('@sendgrid/mail');
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-var transporter = nodemailer.createTransport({
-  service: 'SendGrid',
+const options = {
   auth: {
     api_user: process.env.USERNAME,
     api_key: process.env.SENDGRID_API_KEY
   }
-});
+};
+const client = nodemailer.createTransport(sgTransport(options));
 
 // Mail POST request
 router.post('/send', async (req, res) => {
@@ -41,7 +42,7 @@ router.post('/send', async (req, res) => {
   console.log(mailObject);
 
   // Function to SEND EMAIL to SendGrid
-  await transporter
+  await client
     .sendMail(mailObject)
     .then(() => {
       res.json({
