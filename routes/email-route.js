@@ -7,6 +7,7 @@ const sgTransport = require('nodemailer-sendgrid-transport');
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const options = {
+  service: 'SendGrid',
   auth: {
     api_user: process.env.USERNAME,
     api_key: process.env.SENDGRID_API_KEY
