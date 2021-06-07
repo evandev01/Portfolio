@@ -48,7 +48,7 @@ router.post('/send', async (req, res) => {
         status: 'success',
         data: mailObject
       });
-      console.log('Message sent: ' + info.response);
+      console.log('Message sent: ' + info.res);
     })
     .catch(err => {
       res.json({
