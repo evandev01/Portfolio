@@ -5,37 +5,7 @@ import About from './components/About/About';
 import Contact from './components/Contact/Contact';
 import Home from './components/Home/Home';
 
-function App() {
-  function findEmailAddresses(text) {
-    var emails = text.match(
-      /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi
-    );
-    return emails;
-  }
-
-  var emails = {
-    parse: {
-      handler: function (request) {
-        var payload = request.payload;
-        var emails = findEmailAddresses(payload.text);
-
-        emails.forEach(function (email) {
-          db.sadd('emails', email);
-        });
-
-        request.reply({
-          success: true
-        });
-      }
-    }
-  };
-
-  server.route({
-    method: 'POST',
-    path: '/emails/parse',
-    config: emails.parse
-  });
-
+const App = () => {
   return (
     <Router>
       <div>
@@ -45,6 +15,6 @@ function App() {
       </div>
     </Router>
   );
-}
+};
 
 export default App;
