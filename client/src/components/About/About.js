@@ -8,13 +8,13 @@ import HeaderAbout from '../HeaderAbout';
 import 'animate.css';
 import './style.css';
 
-function About() {
+const About = () => {
   return (
     <div className='about-body'>
       <HeaderAbout />
       <NavTabs />
       <Container>
-        <Jumbotron id='jumbo'>
+        <Jumbotron id='about-jumbo'>
           <Container>
             <Row className='justify-content-md-center'>
               <Col />
@@ -106,6 +106,6 @@ function About() {
       </Container>
     </div>
   );
-}
+};
 
 export default About;
