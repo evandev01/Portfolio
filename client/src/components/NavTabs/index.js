@@ -2,7 +2,7 @@ import React from 'react';
 import { Nav, Container } from 'react-bootstrap';
 import './style.css';
 
-function NavTabs(props) {
+const NavTabs = () => {
   return (
     <div>
       <Container>
@@ -26,29 +26,6 @@ function NavTabs(props) {
       </Container>
     </div>
   );
-}
+};
 
 export default NavTabs;
-
-{
-  /* <Nav id='navDiv'>
-<Navbar>
-    <Nav.Item>
-        <Nav.Link id='link' href='/' >Portfolio</Nav.Link>
-    </Nav.Item>
-</Navbar>
-<Navbar expand='lg'>
-    <Navbar.Toggle aria-controls='basic-navbar-nav' />
-    <Navbar.Collapse id='basic-navbar-nav'>
-        <Nav className='justify-content-end'>
-            <Nav.Item>
-                <Nav.Link id='link' href='about'>About</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link id='link' href='contact' >Contact</Nav.Link>
-            </Nav.Item>
-        </Nav>
-    </Navbar.Collapse>
-</Navbar>
-</Nav> */
-}

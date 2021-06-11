@@ -1,0 +1,14 @@
+/* GITHUB REPO LINKS */
+#github {
+  text-shadow: -2px 2px 8px white;
+  color: rgb(0, 4, 216);
+}
+#github {
+  text-shadow: 2px -2px 8px white;
+  color: rgb(0, 4, 216);
+}
+
+#github:hover {
+  color: rgb(24, 24, 24);
+  text-decoration: underline;
+}
