@@ -14,12 +14,14 @@ import Fit from './assets/icons/fit-track-img.jpg';
 import EDB from './assets/icons/icon_eDB.jpg';
 import Port from './assets/icons/port-icon.jpg';
 import Redeemer from './assets/icons/redeemer_icon.jpg';
+import GNL from './assets/icons/great_news.jpg';
 
 import BurgerModal from '../Modal/BurgerModal';
 import EDateBookModal from '../Modal/EDateBookModal';
 import FitnessTrackerModal from '../Modal/FitnessTrackerModal';
 import PortfolioModal from '../Modal/PortfolioModal';
 import RedeemerModal from '../Modal/RedeemerModal';
+import P5Modal from '../Modal/P5Modal';
 
 import './style.css';
 import 'animate.css';
@@ -33,6 +35,7 @@ const Home = () => {
   const [fitnessState, setFitnessState] = useState(false);
   const [portfolioState, setPortfolioState] = useState(false);
   const [redeemerState, setRedeemerState] = useState(false);
+  const [p5State, setP5State] = useState(false);
 
   return (
     <Container id='home-body'>
@@ -83,6 +86,38 @@ const Home = () => {
                     show={redeemerState}
                     onHide={() => setRedeemerState(false)}
                   />
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col
+              xs={8}
+              sm={6}
+              md={6}
+              lg={4}
+              id='column'
+              className='text-center'
+            >
+              <Card className='text-center' id='card'>
+                <OverlayTrigger
+                  placement='top'
+                  delay={{ show: 100, hide: 150 }}
+                  overlay={<Tooltip>Click To View</Tooltip>}
+                >
+                  <a href='https://editor.p5js.org/evandev01/sketches/ZVfVwelyc'>
+                    <Card.Img
+                      className='animate__animated animate__flipInX'
+                      id='icon'
+                      alt='GreatNews.life p5.js sketch'
+                      src={GNL}
+                    />
+                  </a>
+                </OverlayTrigger>
+                <Card.Body className='white-para'>
+                  <Card.Text id='text'>Portfolio</Card.Text>
+                  <Button id='detail-btn' onClick={() => setP5State(true)}>
+                    Details
+                  </Button>
+                  <P5Modal show={p5State} onHide={() => setP5State(false)} />
                 </Card.Body>
               </Card>
             </Col>
