@@ -256,7 +256,6 @@ const Home = () => {
                 </Card.Body>
               </Card>
             </Col>
-            <Col xs={8} sm={6} md={6} lg={4} id='column' />
           </Row>
         </Container>
       </Jumbotron>
