@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { useState } from 'react';
 import {
   Container,
   Jumbotron,
@@ -6,18 +6,21 @@ import {
   Col,
   Button,
   Card,
-  // Accordion,
   OverlayTrigger,
   Tooltip
-  // CardColumns
 } from 'react-bootstrap';
-import Image from 'react-bootstrap/Image';
 import Burger from './assets/icons/burger_icon.jpg';
 import Fit from './assets/icons/fit-track-img.jpg';
 import EDB from './assets/icons/icon_eDB.jpg';
 import Port from './assets/icons/port-icon.jpg';
 import Redeemer from './assets/icons/redeemer_icon.jpg';
-import Background from './assets/background/colorBg4.jpg';
+
+import BurgerModal from '../Modal/BurgerModal';
+import EDateBookModal from '../Modal/EDateBookModal';
+import FitnessTrackerModal from '../Modal/FitnessTrackerModal';
+import PortfolioModal from '../Modal/PortfolioModal';
+import RedeemerModal from '../Modal/RedeemerModal';
+
 import './style.css';
 import 'animate.css';
 
@@ -25,9 +28,12 @@ import NavTabs from '../NavTabs';
 import HeaderHome from '../HeaderHome';
 
 const Home = () => {
-  const renderTooltip = () => (
-    <Tooltip id='button-tooltip'>Simple tooltip</Tooltip>
-  );
+  const [burgerState, setBurgerState] = useState(false);
+  const [bookState, setBookState] = useState(false);
+  const [fitnessState, setFitnessState] = useState(false);
+  const [portfolioState, setPortfolioState] = useState(false);
+  const [redeemerState, setRedeemerState] = useState(false);
+
   return (
     <Container id='home-body'>
       <HeaderHome />
@@ -48,7 +54,6 @@ const Home = () => {
               id='column'
               className='text-center'
             >
-              {/* <CardColumns className='text-center'> */}
               <Card id='card'>
                 <OverlayTrigger
                   placement='top'
@@ -68,41 +73,19 @@ const Home = () => {
                   <Card.Text id='text' className='text-center'>
                     Redeemer Church
                   </Card.Text>
-                  <Button id='detail-btn'>Details</Button>
-
-                  {/* <Card.Text>
-                Redeemer Church web application
-                
-                <br />
-                Requirements:
-                <br />
-                <ul>
-                  <li>Stream live services</li>
-                  <li>Allow user to give tithes and offerings online</li>
-                  <li>
-                    Provide information about the church, events and staff
-                  </li>
-                </ul>
-                <br />
-                <br />
-                Technologies:
-                <br />
-                React.js, JavaScript, Node.js, React-bootstrap, HTML5, CSS3,
-                Pixelmator graphics software
-                <br />
-                <br />
-                <Card.Link
-                  a
-                  id='github'
-                  href='https://github.com/evandev01/Redeemer'
-                >
-                  GitHub Repo
-                </Card.Link>
-              </Card.Text> */}
+                  <Button
+                    id='detail-btn'
+                    onClick={() => setRedeemerState(true)}
+                  >
+                    Details
+                  </Button>
+                  <RedeemerModal
+                    show={redeemerState}
+                    onHide={() => setRedeemerState(false)}
+                  />
                 </Card.Body>
               </Card>
             </Col>
-
             <Col
               xs={8}
               sm={6}
@@ -120,36 +103,16 @@ const Home = () => {
                 />
                 <Card.Body className='white-para'>
                   <Card.Text id='text'>Portfolio</Card.Text>
-                  <Button id='detail-btn'>Details</Button>
-                  {/* <Card.Text>
-                React portfolio highlighting projects with bio and contact form
-                that sends messages to my email inbox upon submission.
-                <br />
-                <br />
-                Requirements:
-                <br />
-                <ul>
-                  <li>Provide access to my applications</li>
-                  <li>Provide access to my GitHub repository</li>
-                  <li>Provide information about myself</li>
-                  <li>Allow user to contact me</li>
-                </ul>
-                <br />
-                <br />
-                Technologies:
-                <br />
-                React.js, JavaScript, Node.js, Express, Nodemailer, SendGrid,
-                React-bootstrap, HTML5, CSS3, Pixelmator graphics software
-                <br />
-                <br />
-                <Card.Link
-                  a
-                  id='github'
-                  href='https://github.com/evandev01/portfolio'
-                >
-                  GitHub Repo
-                </Card.Link>
-              </Card.Text> */}
+                  <Button
+                    id='detail-btn'
+                    onClick={() => setPortfolioState(true)}
+                  >
+                    Details
+                  </Button>
+                  <PortfolioModal
+                    show={portfolioState}
+                    onHide={() => setPortfolioState(false)}
+                  />
                 </Card.Body>
               </Card>
             </Col>
@@ -178,36 +141,16 @@ const Home = () => {
                 </OverlayTrigger>
                 <Card.Body className='white-para'>
                   <Card.Text id='text'>eDatebook</Card.Text>
-                  <Button id='detail-btn'>Details</Button>
-
-                  {/* <Card.Text>
-                School project application designed to allow user to allow user
-                to create, save, store and delete calendar events and addresses.
-                <br />
-                <br />
-                Responsibilities:
-                <br />
-                Full-Stack
-                <br />
-                <br />
-                Technologies:
-                <br />
-                React.js, JavaScript, Node.js, Express, MySQL, HTML5, CSS3,
-                Pixelmator graphics software
-                <br />
-                <br />
-                *Project is currently under construction.
-                <Card.Link
-                  id='github'
-                  href='https://github.com/evandev01/edatebook'
-                >
-                  GitHub Repo
-                </Card.Link>
-              </Card.Text> */}
+                  <Button id='detail-btn' onClick={() => setBookState(true)}>
+                    Details
+                  </Button>
+                  <EDateBookModal
+                    show={bookState}
+                    onHide={() => setBookState(false)}
+                  />
                 </Card.Body>
               </Card>
             </Col>
-
             <Col
               xs={8}
               sm={6}
@@ -233,33 +176,16 @@ const Home = () => {
                 </OverlayTrigger>
                 <Card.Body className='white-para'>
                   <Card.Text id='text'>Fitness Tracker</Card.Text>
-                  <Button id='detail-btn'>Details</Button>
-
-                  {/* <Card.Text>
-                Application for setting and tracking fitness goals.
-                <br />
-                <br />
-                Responsibilities:
-                <br />
-                UI/UX design and Javascript functionality
-                <br />
-                <br />
-                Technologies:
-                <br />
-                Javascript, HTML5, CSS3, Bootstrap, Pixelmator graphics software
-                <br />
-                <br />
-                <Card.Link
-                  id='github'
-                  href='https://github.com/evandev01/fitness-tracker'
-                >
-                  GitHub Repo
-                </Card.Link>
-              </Card.Text> */}
+                  <Button id='detail-btn' onClick={() => setFitnessState(true)}>
+                    Details
+                  </Button>
+                  <FitnessTrackerModal
+                    show={fitnessState}
+                    onHide={() => setFitnessState(false)}
+                  />
                 </Card.Body>
               </Card>
             </Col>
-
             <Col
               xs={8}
               sm={6}
@@ -285,37 +211,17 @@ const Home = () => {
                 </OverlayTrigger>
                 <Card.Body className='white-para'>
                   <Card.Text id='text'>Eat Da Burger</Card.Text>
-                  <Button id='detail-btn'>Details</Button>
-
-                  {/* <Card.Text>
-                School application that allows the user to create a burger,
-                devour it, eat it again or delete it.
-                <br />
-                <br />
-                Responsibilities:
-                <br />
-                Full-Stack
-                <br />
-                <br />
-                Technologies:
-                <br />
-                JavaScript, Node.js, Handlebars, Express, MVC, MySQL, HTML5,
-                CSS3, Pixelmator graphics software
-                <br />
-                <br />
-                <Card.Link
-                  a
-                  id='github'
-                  href='https://github.com/evandev01/burger_express_handlebars'
-                >
-                  GitHub Repo
-                </Card.Link>
-              </Card.Text> */}
+                  <Button id='detail-btn' onClick={() => setBurgerState(true)}>
+                    Details
+                  </Button>
+                  <BurgerModal
+                    show={burgerState}
+                    onHide={() => setBurgerState(false)}
+                  />
                 </Card.Body>
               </Card>
             </Col>
             <Col xs={8} sm={6} md={6} lg={4} id='column' />
-            {/* </CardColumns> */}
           </Row>
         </Container>
       </Jumbotron>

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Jumbotron, Container, Col, Row } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
 import Photo from './assets/black_tie_smile.jpeg';
