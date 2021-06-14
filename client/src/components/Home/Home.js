@@ -113,7 +113,7 @@ const Home = () => {
                   </a>
                 </OverlayTrigger>
                 <Card.Body className='white-para'>
-                  <Card.Text id='text'>Portfolio</Card.Text>
+                  <Card.Text id='text'>GreatNews.life</Card.Text>
                   <Button id='detail-btn' onClick={() => setP5State(true)}>
                     Details
                   </Button>
