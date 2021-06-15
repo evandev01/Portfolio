@@ -5,15 +5,7 @@ const router = require('express').Router();
 const healthCheckRoute = require('./health-check');
 const email = require('./email-route');
 
-// API Route
-// Route used to CRUD email
+// SendGrid single send API Route
 router.use('https://api.sendgrid.com/v3/mail', email);
-
-router.use('/api', healthCheckRoute);
-
-// If no API routes are hit, send confirmation
-// router.use(function (req, res) {
-//   res.json({ Response: 'Incorrect Url' });
-// });
 
 module.exports = router;
