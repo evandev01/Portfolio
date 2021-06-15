@@ -6,7 +6,7 @@ const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // Mail POST request
-router.post('/send', async (req, res) => {
+router.post('/send', (req, res) => {
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const email = req.body.email;
@@ -29,9 +29,7 @@ router.post('/send', async (req, res) => {
     text: content,
     html: '<strong>and easy to do anywhere, even with Node.js</strong>'
   };
-
-  // Function to SEND EMAIL to SendGrid
-  await sgMail
+  sgMail
     .send(msg)
     .then(() => {
       console.log('Email sent');
@@ -48,9 +46,30 @@ router.post('/send', async (req, res) => {
         error: err
       });
     });
+  console.log(msg);
 });
 
 module.exports = router;
+
+// Function to SEND EMAIL to SendGrid
+//   await sgMail
+//     .send(msg)
+//     .then(() => {
+//       console.log('Email sent');
+//       console.log(msg);
+//       res.json({
+//         status: 'success',
+//         data: msg
+//       });
+//     })
+//     .catch(err => {
+//       console.log(err);
+//       res.json({
+//         status: 'fail',
+//         error: err
+//       });
+//     });
+// });
 
 // const nodemailer = require('nodemailer');
 // const sgTransport = require('nodemailer-sendgrid-transport');

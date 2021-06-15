@@ -61,18 +61,18 @@ const About = () => {
                     <br />
                     Front-end:
                     <br />
-                    React.js, Node.js, HTML, CSS, Bootstrap libraries, and
-                    Graphic Design.
+                    React.js, JavaScript, Redux, Node.js, HTML, CSS, Bootstrap
+                    libraries, and Graphic Design.
                     <br />
                     <br />
                     Back-end:
                     <br />
-                    REST API (Express, Node.js, Sequelize, MySQL)
+                    Express, Node.js, Sequelize, MySQL, MongoDB
                     <br />
                     <br />
-                    I am experienced in client / server / database integration,
-                    and I enjoy working both independently and in collaboration
-                    as part of a development team in an agile environment.
+                    I have experience with client/server integration, and I
+                    enjoy working independently and in collaboration as part of
+                    a development team in an agile environment.
                     <br />
                     <br />
                     Please check out some of my applications on my portfolio
