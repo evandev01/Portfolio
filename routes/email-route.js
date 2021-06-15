@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config(sendgrid);
 const router = require('express').Router();
 
 // SendGrid
@@ -29,10 +29,12 @@ router.post('/send', (req, res) => {
     text: content,
     html: '<strong>and easy to do anywhere, even with Node.js</strong>'
   };
+
   console.log('this is the api key: ');
   console.log(process.env.SENDGRID_PASSWORD);
   console.log('this is the message: ');
   console.log(msg);
+
   // Function to SEND EMAIL to SendGrid
   // sgMail
   //   .send(msg)
