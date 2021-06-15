@@ -1,4 +1,4 @@
-require('dotenv').config(sendgrid);
+require('dotenv').config(sendgrid.env);
 const router = require('express').Router();
 
 // SendGrid
