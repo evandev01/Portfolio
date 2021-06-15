@@ -1,8 +1,8 @@
-require('dotenv').config(sendgrid.env);
+require('dotenv').config();
 const router = require('express').Router();
 
 // SendGrid
-var sgMail = require('@sendgrid/mail');
+const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // Mail POST request
@@ -22,7 +22,7 @@ router.post('/send', (req, res) => {
       text: ${text} `;
 
   // Email object
-  var msg = {
+  const msg = {
     from: 'evanbero@evandev.com',
     to: 'evanbero@evandev.com',
     subject: subject,
@@ -30,29 +30,24 @@ router.post('/send', (req, res) => {
     html: '<strong>and easy to do anywhere, even with Node.js</strong>'
   };
 
-  console.log('this is the api key: ');
-  console.log(process.env.SENDGRID_PASSWORD);
-  console.log('this is the message: ');
-  console.log(msg);
-
   // Function to SEND EMAIL to SendGrid
-  // sgMail
-  //   .send(msg)
-  //   .then(() => {
-  //     console.log('Email sent');
-  //     console.log(msg);
-  //     res.json({
-  //       status: 'success',
-  //       data: msg
-  //     });
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //     res.json({
-  //       status: 'fail',
-  //       error: err
-  //     });
-  //   });
+  sgMail
+    .send(msg)
+    .then(() => {
+      console.log('Email sent');
+      console.log(msg);
+      res.json({
+        status: 'success',
+        data: msg
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.json({
+        status: 'fail',
+        error: err
+      });
+    });
 });
 
 module.exports = router;

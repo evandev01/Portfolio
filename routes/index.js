@@ -7,7 +7,7 @@ const email = require('./email-route');
 
 // API Route
 // Route used to CRUD email
-router.use('/api/contact', email);
+router.use('https://api.sendgrid.com/v3/mail', email);
 
 router.use('/api', healthCheckRoute);
 
