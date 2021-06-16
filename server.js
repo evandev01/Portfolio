@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const routes = require('./routes');
 const path = require('path');
 const app = express();
@@ -19,6 +20,8 @@ app.get('*', (req, res) => {
 
 // Add routes, both API and View
 app.use(routes);
+
+app.use(cors());
 
 const PORT = process.env.PORT || 3001;
 
