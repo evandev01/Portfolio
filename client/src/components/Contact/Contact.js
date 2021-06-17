@@ -108,7 +108,7 @@ const Contact = () => {
               placeholder='name@gmail.com'
               type='email'
               onChange={e => onChange(e)}
-              value={email}
+              value={senderEmail}
             />
           </Form.Group>
 

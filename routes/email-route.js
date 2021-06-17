@@ -1,9 +1,6 @@
 require('dotenv').config();
 const router = require('express').Router();
 
-// SendGrid
-// const sgMail = require('@sendgrid/mail');
-// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const nodemailer = require('nodemailer');
 const sgTransport = require('nodemailer-sendgrid-transport');
 const options = {
@@ -31,7 +28,6 @@ router.post('/send', async (req, res) => {
       occupation: ${occupation} \n
       subject: ${subject} \n
       text: ${text} `;
-  //https://api.sendgrid.com/v3/mail/send
 
   // Email object
   const email = {
@@ -57,25 +53,31 @@ router.post('/send', async (req, res) => {
       });
     }
   });
-
-  // Function to SEND EMAIL to SendGrid
-  //   await sgMail
-  //     .send(msg)
-  //     .then(() => {
-  //       console.log('Email sent');
-  //       console.log(msg);
-  //       res.json({
-  //         status: 'success',
-  //         data: msg
-  //       });
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //       res.json({
-  //         status: 'fail',
-  //         error: err
-  //       });
-  //     });
 });
 
 module.exports = router;
+
+//https://api.sendgrid.com/v3/mail/send
+
+// SendGrid
+// const sgMail = require('@sendgrid/mail');
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+// Function to SEND EMAIL to SendGrid
+//   await sgMail
+//     .send(msg)
+//     .then(() => {
+//       console.log('Email sent');
+//       console.log(msg);
+//       res.json({
+//         status: 'success',
+//         data: msg
+//       });
+//     })
+//     .catch(err => {
+//       console.log(err);
+//       res.json({
+//         status: 'fail',
+//         error: err
+//       });
+//     });
