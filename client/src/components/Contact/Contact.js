@@ -12,13 +12,14 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    email: '',
+    senderEmail: '',
     occupation: '',
     subject: '',
     text: ''
   });
 
-  const { firstName, lastName, email, occupation, subject, text } = formData;
+  const { firstName, lastName, senderEmail, occupation, subject, text } =
+    formData;
 
   // onChange Event Handler
   const onChange = e => {
@@ -30,7 +31,7 @@ const Contact = () => {
     setFormData({
       firstName: '',
       lastName: '',
-      email: '',
+      senderEmail: '',
       occupation: '',
       subject: '',
       text: ''
@@ -39,7 +40,14 @@ const Contact = () => {
   // Submit event handler
   const handleSubmit = async e => {
     e.preventDefault();
-    const data = { firstName, lastName, email, occupation, subject, text };
+    const data = {
+      firstName,
+      lastName,
+      senderEmail,
+      occupation,
+      subject,
+      text
+    };
 
     await API.sendEmail(data)
       .then(response => {
@@ -48,7 +56,7 @@ const Contact = () => {
         resetForm();
         if (response.data.status === 'success') {
           alert(
-            'Message Sent!\nPlease allow 24hrs for a response.\nThank you for visting evanDev.com and have a great day!'
+            'Email Sent!\nPlease allow 24hrs for a response.\nThank you for visting evanDev.com and have a great day!'
           );
           resetForm();
         } else if (response.data.status === 'fail') {
@@ -95,7 +103,7 @@ const Contact = () => {
           <Form.Group controlId='exampleForm.ControlInput1'>
             <Form.Label>Email Address</Form.Label>
             <Form.Control
-              name='email'
+              name='senderEmail'
               className='animate__animated animate__backInDown '
               placeholder='name@gmail.com'
               type='email'
