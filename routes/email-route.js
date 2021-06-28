@@ -1,5 +1,6 @@
 require('dotenv').config()
 const router = require('express').Router()
+
 const sgMail = require('@sendgrid/mail')
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
@@ -22,8 +23,8 @@ router.post('/send', async (req, res) => {
 
   // Email object
   const msg = {
-    from: `<evanbero@evandev.com>`,
     to: `<evanbero@evandev.com>`,
+    from: `<evanbero@evandev.com>`,
     subject: subject,
     text: content,
     html: '<strong>and easy to do anywhere, even with Node.js</strong>',
