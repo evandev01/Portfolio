@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios from 'axios'
 // Email POST request made from Contact form
 const API = {
-  sendEmail: function (data) {
-    return axios.post('/api/mail/send', data);
-  }
-};
+  sendEmail: async function (formData) {
+    return await axios.post('/api/mail/send', formData)
+  },
+}
 
-export default API;
+export default API

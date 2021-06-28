@@ -38,6 +38,16 @@ router.post('/send', async (req, res) => {
     html: '<strong>and easy to do anywhere, even with Node.js</strong>',
   }
 
+  console.log(`Email: \n 
+  firstName: ${firstName} \n 
+      lastName: ${lastName} \n
+      email: ${senderEmail} \n 
+      occupation: ${occupation} \n
+      subject: ${subject} \n
+      text: ${text} `)
+
+  console.log(JSON.stringify(email))
+
   await client.sendMail(email, (err, info) => {
     if (err) {
       console.log(error)

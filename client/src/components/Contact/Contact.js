@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import API from '../../utils/API';
-import NavTabs from '../NavTabs';
-import HeaderContact from '../HeaderContact';
-import { Form, Container, Col, Button } from 'react-bootstrap';
-import 'animate.css';
-import './style.css';
+import React, { useState } from 'react'
+import API from '../../utils/API'
+import NavTabs from '../NavTabs'
+import HeaderContact from '../HeaderContact'
+import { Form, Container, Col, Button } from 'react-bootstrap'
+import 'animate.css'
+import './style.css'
 
-require('dotenv').config();
+require('dotenv').config()
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,16 +15,16 @@ const Contact = () => {
     senderEmail: '',
     occupation: '',
     subject: '',
-    text: ''
-  });
+    text: '',
+  })
 
   const { firstName, lastName, senderEmail, occupation, subject, text } =
-    formData;
+    formData
 
   // onChange Event Handler
   const onChange = e => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
 
   // Reset form function
   const resetForm = () =>
@@ -34,49 +34,38 @@ const Contact = () => {
       senderEmail: '',
       occupation: '',
       subject: '',
-      text: ''
-    });
+      text: '',
+    })
 
   // Submit event handler
   const handleSubmit = async e => {
-    e.preventDefault();
-    const data = {
-      firstName,
-      lastName,
-      senderEmail,
-      occupation,
-      subject,
-      text
-    };
+    e.preventDefault()
 
-    await API.sendEmail(data)
+    await API.sendEmail(formData)
       .then(response => {
-        console.log(response);
-        console.log(data);
-        resetForm();
+        resetForm()
+        console.log(response)
+        console.log(formData)
         if (response.data.status === 'success') {
           alert(
             'Email Sent!\nPlease allow 24hrs for a response.\nThank you for visting evanDev.com and have a great day!'
-          );
-          resetForm();
+          )
+          resetForm()
         } else if (response.data.status === 'fail') {
-          alert('Message failed');
-          resetForm();
+          alert('Message failed')
+          resetForm()
         }
       })
-      .then(() => {
-        console.log(data);
-        resetForm();
-      })
-      .catch(err => console.log(err));
-  };
+      .catch(err => console.log(err))
+    resetForm()
+  }
 
   return (
     <div id='contact-body'>
       <HeaderContact />
       <NavTabs />
       <Container>
-        <Form onSubmit={e => handleSubmit(e)}>
+        <Form onSubmit={e => handleSubmit(e).then(resetForm())}>
           <Form.Row>
             <Col>
               <Form.Control
@@ -164,7 +153,7 @@ const Contact = () => {
         </Form>
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact
