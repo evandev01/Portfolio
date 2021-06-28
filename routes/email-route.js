@@ -1,17 +1,8 @@
 require('dotenv').config()
 const router = require('express').Router()
+const sgMail = require('@sendgrid/mail')
 
-const nodemailer = require('nodemailer')
-const sgTransport = require('nodemailer-sendgrid-transport')
-const options = {
-  host: process.env.SENDGRID_HOST,
-  port: process.env.SENDGRID_PORT,
-  auth: {
-    api_user: process.env.USER,
-    api_key: process.env.PASS,
-  },
-}
-const client = nodemailer.createTransport(sgTransport(options))
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 // Single Send Email POST request
 router.post('/send', async (req, res) => {
@@ -30,7 +21,7 @@ router.post('/send', async (req, res) => {
       text: ${text} `
 
   // Email object
-  const email = {
+  const msg = {
     from: `<evanbero@evandev.com>`,
     to: `<evanbero@evandev.com>`,
     subject: subject,
@@ -48,46 +39,9 @@ router.post('/send', async (req, res) => {
 
   console.log(JSON.stringify(email))
 
-  await client.sendMail(email, (err, info) => {
-    if (err) {
-      console.log(error)
-      res.json({
-        status: 'fail',
-        error: err,
-      })
-    } else {
-      console.log('Message sent: ' + info.response)
-      res.json({
-        status: 'success',
-        data: msg,
-      })
-    }
-  })
+  sgMail.send(msg)
 })
 
 module.exports = router
 
 //https://api.sendgrid.com/v3/mail/send
-
-// SendGrid
-// const sgMail = require('@sendgrid/mail');
-// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-// Function to SEND EMAIL to SendGrid
-//   await sgMail
-//     .send(msg)
-//     .then(() => {
-//       console.log('Email sent');
-//       console.log(msg);
-//       res.json({
-//         status: 'success',
-//         data: msg
-//       });
-//     })
-//     .catch(err => {
-//       console.log(err);
-//       res.json({
-//         status: 'fail',
-//         error: err
-//       });
-//     });
