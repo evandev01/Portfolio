@@ -7,6 +7,11 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 // Single Send Email POST request
 router.post('/send', async (req, res) => {
+  const logger = () => {
+    console.log(process.env.SENDGRID_API_KEY)
+  }
+  logger()
+
   const firstName = req.body.firstName
   const lastName = req.body.lastName
   const senderEmail = req.body.senderEmail
@@ -40,7 +45,23 @@ router.post('/send', async (req, res) => {
 
   console.log(JSON.stringify(email))
 
-  sgMail.send(msg)
+  await sgMail
+    .send(msg)
+    .then(() => {
+      console.log('Message sent: ' + res.data)
+      res.json({
+        status: 'success',
+        data: msg,
+      })
+    })
+
+    .catch(err => {
+      console.log(error)
+      res.json({
+        status: 'fail',
+        error: err,
+      })
+    })
 })
 
 module.exports = router

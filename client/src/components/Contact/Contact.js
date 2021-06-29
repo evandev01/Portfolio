@@ -6,11 +6,7 @@ import { Form, Container, Col, Button } from 'react-bootstrap'
 import 'animate.css'
 import './style.css'
 
-require('dotenv').config()
-
 const sgMail = require('@sendgrid/mail')
-
-sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -54,29 +50,24 @@ const Contact = () => {
   const handleSubmit = async e => {
     e.preventDefault()
 
-    await sgMail
-      .send(msg)
-      .then(() => console.log(`Success! \n ${msg}`))
+    await API.sendEmail(formData)
+      .then(response => {
+        resetForm()
+        console.log(response)
+        console.log(formData)
+        if (response.data.status === 'success') {
+          alert(
+            'Email Sent!\nPlease allow 24hrs for a response.\nThank you for visting evanDev.com and have a great day!'
+          )
+          resetForm()
+        } else if (response.data.status === 'fail') {
+          alert('Message failed')
+          resetForm()
+        }
+      })
       .catch(err => console.log(err))
+    resetForm()
   }
-  //   await API.sendEmail(formData)
-  //     .then(response => {
-  //       resetForm()
-  //       console.log(response)
-  //       console.log(formData)
-  //       if (response.data.status === 'success') {
-  //         alert(
-  //           'Email Sent!\nPlease allow 24hrs for a response.\nThank you for visting evanDev.com and have a great day!'
-  //         )
-  //         resetForm()
-  //       } else if (response.data.status === 'fail') {
-  //         alert('Message failed')
-  //         resetForm()
-  //       }
-  //     })
-  //     .catch(err => console.log(err))
-  //   resetForm()
-  // }
 
   return (
     <div id='contact-body'>
