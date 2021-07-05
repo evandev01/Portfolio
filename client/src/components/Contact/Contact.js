@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import API from '../../utils/API'
 import NavTabs from '../NavTabs'
 import HeaderContact from '../HeaderContact'
@@ -9,6 +10,7 @@ import './style.css'
 const sgMail = require('@sendgrid/mail')
 
 const Contact = () => {
+  const [apiKey, setApiKey] = useState('')
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -30,6 +32,26 @@ const Contact = () => {
     html: '<strong>and easy to do anywhere, even with Node.js</strong>',
   }
 
+  // Get API key
+  const getApiKey = async () => {
+    try {
+      await axios.get('/api/apikey').then(response => {
+        if (response) {
+          setApiKey(response)
+          console.log(response)
+        } else {
+          console.log('api key not found')
+        }
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getApiKey()
+  }, [])
+
   // onChange Event Handler
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -49,24 +71,16 @@ const Contact = () => {
   // Submit event handler
   const handleSubmit = async e => {
     e.preventDefault()
-
-    await API.sendEmail(formData)
-      .then(response => {
-        resetForm()
-        console.log(response)
-        console.log(formData)
-        if (response.data.status === 'success') {
-          alert(
-            'Email Sent!\nPlease allow 24hrs for a response.\nThank you for visting evanDev.com and have a great day!'
-          )
-          resetForm()
-        } else if (response.data.status === 'fail') {
-          alert('Message failed')
-          resetForm()
-        }
+    await sgMail
+      .send(msg)
+      .then(res => {
+        console.log('Message sent: ' + res)
+        alert('Message sent')
       })
-      .catch(err => console.log(err))
-    resetForm()
+      .catch(err => {
+        console.log(err)
+        alert('Message failed')
+      })
   }
 
   return (
