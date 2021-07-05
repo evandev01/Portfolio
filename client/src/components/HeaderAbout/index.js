@@ -1,8 +1,8 @@
-import React from 'react';
-import { Image, Container } from 'react-bootstrap';
-import './style.css';
-import 'animate.css';
-import headerImage from './assets/edev03.jpg';
+import React from 'react'
+import { Image, Container } from 'react-bootstrap'
+import './style.css'
+import 'animate.css'
+import headerImage from './assets/edev03.jpg'
 
 const HeaderAbout = () => {
   return (
@@ -11,7 +11,7 @@ const HeaderAbout = () => {
         <Image id='header' src={headerImage} />
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default HeaderAbout;
+export default HeaderAbout
