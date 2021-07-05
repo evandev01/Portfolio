@@ -36,7 +36,6 @@ const Contact = () => {
       await axios.get('/api/apikey').then(response => {
         if (response) {
           sgMail.setApiKey(response)
-          console.log(response)
         } else {
           console.log('api key not found')
         }
