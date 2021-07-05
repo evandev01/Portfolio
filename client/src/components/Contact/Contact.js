@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import API from '../../utils/API'
 import NavTabs from '../NavTabs'
 import HeaderContact from '../HeaderContact'
 import { Form, Container, Col, Button } from 'react-bootstrap'
@@ -10,7 +9,6 @@ import './style.css'
 const sgMail = require('@sendgrid/mail')
 
 const Contact = () => {
-  const [apiKey, setApiKey] = useState('')
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -37,7 +35,7 @@ const Contact = () => {
     try {
       await axios.get('/api/apikey').then(response => {
         if (response) {
-          setApiKey(response)
+          sgMail.setApiKey(response)
           console.log(response)
         } else {
           console.log('api key not found')
