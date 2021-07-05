@@ -1,12 +1,13 @@
-import React from 'react';
-import { Jumbotron, Container, Col, Row } from 'react-bootstrap';
-import Image from 'react-bootstrap/Image';
-import Photo from './assets/black_tie_smile.jpeg';
-import Logo from './assets/reactImg.png';
-import NavTabs from '../NavTabs';
-import HeaderAbout from '../HeaderAbout';
-import 'animate.css';
-import './style.css';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Jumbotron, Container, Col, Row } from 'react-bootstrap'
+import Image from 'react-bootstrap/Image'
+import Photo from './assets/black_tie_smile.jpeg'
+import Logo from './assets/reactImg.png'
+import NavTabs from '../NavTabs'
+import HeaderAbout from '../HeaderAbout'
+import 'animate.css'
+import './style.css'
 
 const About = () => {
   return (
@@ -101,11 +102,14 @@ const About = () => {
                 alt='Photo of Evan Bero'
               />
             </Row>
+            <Row className='justify-content-md-center py-3'>
+              <a href={`mailto:evanbero@evandev.com`}>Contact</a>
+            </Row>
           </Container>
         </Jumbotron>
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default About;
+export default About
