@@ -1,8 +1,8 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import About from './components/About/About';
-import Contact from './components/Contact/Contact';
-import Home from './components/Home/Home';
+import React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import About from './components/About/About'
+import Contact from './components/Contact/Contact'
+import Home from './components/Home/Home'
 
 const App = () => {
   return (
@@ -13,7 +13,7 @@ const App = () => {
         <Route path='/contact' exact component={Contact} />
       </div>
     </Router>
-  );
-};
+  )
+}
 
-export default App;
+export default App
