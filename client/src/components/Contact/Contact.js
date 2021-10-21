@@ -50,7 +50,8 @@ const Contact = () => {
     }
     await axios
       .post('/send', formData)
-      .then(() => resetForm())
+      .then(alert('Message sent'))
+      .then(resetForm())
       .catch(console.error)
   }
 
