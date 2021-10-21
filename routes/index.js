@@ -1,13 +1,8 @@
-//Ref:  Routes index.js from edate project
-
 const path = require('path')
 const router = require('express').Router()
-// const email = require('./email-route')
-// const apikey = require('./apikey-route')
+const email = require('./email-route')
 
 // SendGrid single send API Route
-// router.use('/api/mail', email)
-
-// router.use('/api/apikey', apikey)
+router.use('/send', email)
 
 module.exports = router

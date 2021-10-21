@@ -17,11 +17,11 @@ const NavTabs = () => {
               Portfolio
             </Nav.Link>
           </Nav.Item>
-          {/* <Nav.Item>
+          <Nav.Item>
             <Nav.Link id='link' href='/contact'>
               Contact
             </Nav.Link>
-          </Nav.Item> */}
+          </Nav.Item>
         </Nav>
       </Container>
     </div>

@@ -21,34 +21,6 @@ const Contact = () => {
   const { firstName, lastName, senderEmail, occupation, subject, text } =
     formData
 
-  // Email object
-  const msg = {
-    to: `<evanbero@evandev.com>`,
-    from: `<evanbero@evandev.com>`,
-    subject: subject,
-    text: text,
-    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-  }
-
-  // Get API key
-  const getApiKey = async () => {
-    try {
-      await axios.get('/api/apikey').then(response => {
-        if (response) {
-          sgMail.setApiKey(response)
-        } else {
-          console.log('api key not found')
-        }
-      })
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  useEffect(() => {
-    getApiKey()
-  }, [])
-
   // onChange Event Handler
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -68,16 +40,18 @@ const Contact = () => {
   // Submit event handler
   const handleSubmit = async e => {
     e.preventDefault()
-    await sgMail
-      .send(msg)
-      .then(res => {
-        console.log('Message sent: ' + res)
-        alert('Message sent')
-      })
-      .catch(err => {
-        console.log(err)
-        alert('Message failed')
-      })
+    const data = {
+      firstName: firstName,
+      lastName: lastName,
+      senderEmail: senderEmail,
+      occupation: occupation,
+      subject: subject,
+      text: text,
+    }
+    await axios
+      .post('/send', formData)
+      .then(() => resetForm())
+      .catch(console.error)
   }
 
   return (
@@ -85,7 +59,7 @@ const Contact = () => {
       <HeaderContact />
       <NavTabs />
       <Container>
-        <Form onSubmit={e => handleSubmit(e).then(resetForm())}>
+        <Form onSubmit={e => handleSubmit(e)}>
           <Form.Row>
             <Col>
               <Form.Control

@@ -10,7 +10,7 @@ const App = () => {
       <div>
         <Route path='/' exact component={About} />
         <Route path='/portfolio' exact component={Home} />
-        {/* <Route path='/contact' exact component={Contact} /> */}
+        <Route path='/contact' exact component={Contact} />
       </div>
     </Router>
   )
