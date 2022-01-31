@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { Jumbotron, Container, Col, Row } from 'react-bootstrap'
 import Image from 'react-bootstrap/Image'
 import Photo from './assets/black_tie_smile.jpeg'

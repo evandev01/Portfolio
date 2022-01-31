@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   Container,
   Jumbotron,
@@ -7,35 +7,23 @@ import {
   Button,
   Card,
   OverlayTrigger,
-  Tooltip
-} from 'react-bootstrap';
-import Burger from './assets/icons/burger_icon.jpg';
-import Fit from './assets/icons/fit-track-img.jpg';
-import EDB from './assets/icons/icon_eDB.jpg';
-import Port from './assets/icons/port-icon.jpg';
-import Redeemer from './assets/icons/redeemer_icon.jpg';
-import GNL from './assets/icons/great_news.jpg';
-
-import BurgerModal from '../Modal/BurgerModal';
-import EDateBookModal from '../Modal/EDateBookModal';
-import FitnessTrackerModal from '../Modal/FitnessTrackerModal';
-import PortfolioModal from '../Modal/PortfolioModal';
-import RedeemerModal from '../Modal/RedeemerModal';
-import P5Modal from '../Modal/P5Modal';
-
-import './style.css';
-import 'animate.css';
-
-import NavTabs from '../NavTabs';
-import HeaderHome from '../HeaderHome';
+  Tooltip,
+} from 'react-bootstrap'
+import Redeemer from './assets/icons/redeemer_icon.jpg'
+import Rustic from '../../assets/icons/rustic_logo.png'
+import GNL from './assets/icons/great_news.jpg'
+import RusticModal from '../Modal/RusticModal'
+import RedeemerModal from '../Modal/RedeemerModal'
+import P5Modal from '../Modal/P5Modal'
+import NavTabs from '../NavTabs'
+import HeaderHome from '../HeaderHome'
+import './style.css'
+import 'animate.css'
 
 const Home = () => {
-  const [burgerState, setBurgerState] = useState(false);
-  const [bookState, setBookState] = useState(false);
-  const [fitnessState, setFitnessState] = useState(false);
-  const [portfolioState, setPortfolioState] = useState(false);
-  const [redeemerState, setRedeemerState] = useState(false);
-  const [p5State, setP5State] = useState(false);
+  const [rusticState, setRusticState] = useState(false)
+  const [redeemerState, setRedeemerState] = useState(false)
+  const [p5State, setP5State] = useState(false)
 
   return (
     <Container id='home-body'>
@@ -44,16 +32,51 @@ const Home = () => {
       <Jumbotron id='home-jumbo'>
         <Container
           style={{
-            display: 'flex',
-            flexWrap: 'wrap'
+            display: 'block',
+            flexWrap: 'wrap',
           }}
         >
-          <Row className='justify-content-center'>
+          <Row className='justify-content-md-center'>
             <Col
-              xs={8}
-              sm={6}
-              md={6}
-              lg={4}
+              // xs={8}
+              // sm={6}
+              md={4}
+              // lg={4}
+              id='column'
+              className='text-center'
+            >
+              <Card className='text-center' id='card'>
+                <OverlayTrigger
+                  placement='top'
+                  delay={{ show: 100, hide: 150 }}
+                  overlay={<Tooltip>Click To View</Tooltip>}
+                >
+                  <a href='https://www.rusticliving.design/'>
+                    <Card.Img
+                      className='animate__animated animate__flipInX'
+                      id='icon'
+                      alt='Rustic Living application'
+                      src={Rustic}
+                    />
+                  </a>
+                </OverlayTrigger>
+                <Card.Body className='white-para'>
+                  <Card.Text id='text'>Rustic Living</Card.Text>
+                  <Button id='detail-btn' onClick={() => setRusticState(true)}>
+                    Details
+                  </Button>
+                  <RusticModal
+                    show={rusticState}
+                    onHide={() => setRusticState(false)}
+                  />
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col
+              // xs={8}
+              // sm={6}
+              md={4}
+              // lg={4}
               id='column'
               className='text-center'
             >
@@ -90,10 +113,10 @@ const Home = () => {
               </Card>
             </Col>
             <Col
-              xs={8}
-              sm={6}
-              md={6}
-              lg={4}
+              // xs={8}
+              // sm={6}
+              md={4}
+              // lg={4}
               id='column'
               className='text-center'
             >
@@ -121,146 +144,11 @@ const Home = () => {
                 </Card.Body>
               </Card>
             </Col>
-            <Col
-              xs={8}
-              sm={6}
-              md={6}
-              lg={4}
-              id='column'
-              className='text-center'
-            >
-              <Card className='text-center' id='card'>
-                <Card.Img
-                  className='animate__animated animate__flipInX'
-                  id='icon'
-                  alt='Portfolio web application'
-                  src={Port}
-                />
-                <Card.Body className='white-para'>
-                  <Card.Text id='text'>Portfolio</Card.Text>
-                  <Button
-                    id='detail-btn'
-                    onClick={() => setPortfolioState(true)}
-                  >
-                    Details
-                  </Button>
-                  <PortfolioModal
-                    show={portfolioState}
-                    onHide={() => setPortfolioState(false)}
-                  />
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col
-              xs={8}
-              sm={6}
-              md={6}
-              lg={4}
-              id='column'
-              className='text-center'
-            >
-              <Card className='text-center' id='card'>
-                <OverlayTrigger
-                  placement='top'
-                  delay={{ show: 100, hide: 150 }}
-                  overlay={<Tooltip>Click To View</Tooltip>}
-                >
-                  <a href='https://secret-citadel-74541.herokuapp.com/'>
-                    <Card.Img
-                      className='animate__animated animate__flipInX'
-                      id='icon'
-                      alt='Edatebook application'
-                      src={EDB}
-                    />
-                  </a>
-                </OverlayTrigger>
-                <Card.Body className='white-para'>
-                  <Card.Text id='text'>eDatebook</Card.Text>
-                  <Button id='detail-btn' onClick={() => setBookState(true)}>
-                    Details
-                  </Button>
-                  <EDateBookModal
-                    show={bookState}
-                    onHide={() => setBookState(false)}
-                  />
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col
-              xs={8}
-              sm={6}
-              md={6}
-              lg={4}
-              id='column'
-              className='text-center'
-            >
-              <Card className='text-center' id='card'>
-                <OverlayTrigger
-                  placement='top'
-                  delay={{ show: 100, hide: 150 }}
-                  overlay={<Tooltip>Click To View</Tooltip>}
-                >
-                  <a href='https://evandev01.github.io/fitness-tracker/'>
-                    <Card.Img
-                      className='animate__animated animate__flipInX'
-                      id='icon'
-                      alt='Fitness Tracker application'
-                      src={Fit}
-                    />
-                  </a>
-                </OverlayTrigger>
-                <Card.Body className='white-para'>
-                  <Card.Text id='text'>Fitness Tracker</Card.Text>
-                  <Button id='detail-btn' onClick={() => setFitnessState(true)}>
-                    Details
-                  </Button>
-                  <FitnessTrackerModal
-                    show={fitnessState}
-                    onHide={() => setFitnessState(false)}
-                  />
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col
-              xs={8}
-              sm={6}
-              md={6}
-              lg={4}
-              id='column'
-              className='text-center'
-            >
-              <Card className='text-center' id='card'>
-                <OverlayTrigger
-                  placement='top'
-                  delay={{ show: 100, hide: 150 }}
-                  overlay={<Tooltip>Click To View</Tooltip>}
-                >
-                  <a href='https://desolate-island-65416.herokuapp.com/'>
-                    <Card.Img
-                      className='animate__animated animate__flipInX'
-                      id='icon'
-                      alt='Eat Da Burger application'
-                      src={Burger}
-                    />
-                  </a>
-                </OverlayTrigger>
-                <Card.Body className='white-para'>
-                  <Card.Text id='text'>Eat Da Burger</Card.Text>
-                  <Button id='detail-btn' onClick={() => setBurgerState(true)}>
-                    Details
-                  </Button>
-                  <BurgerModal
-                    show={burgerState}
-                    onHide={() => setBurgerState(false)}
-                  />
-                </Card.Body>
-              </Card>
-            </Col>
           </Row>
         </Container>
       </Jumbotron>
     </Container>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import NavTabs from '../NavTabs'
 import HeaderContact from '../HeaderContact'
 import { Form, Container, Col, Button } from 'react-bootstrap'
 import 'animate.css'
 import './style.css'
-
-const sgMail = require('@sendgrid/mail')
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -49,7 +47,7 @@ const Contact = () => {
       text: text,
     }
     await axios
-      .post('/send', formData)
+      .post('/send', data)
       .then(alert('Message sent'))
       .then(resetForm())
       .catch(console.error)

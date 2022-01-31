@@ -1,4 +1,5 @@
-require('dotenv').config()
+const dotenv = require('dotenv')
+dotenv.config()
 const router = require('express').Router()
 const sgMail = require('@sendgrid/mail')
 
@@ -11,9 +12,9 @@ router.post('/', async (req, res) => {
   const subject = req.body.subject
   const text = req.body.text
   const content = `
-  firstName: ${firstName} 
+  firstName: ${firstName}
   lastName: ${lastName}
-  email: ${senderEmail} 
+  email: ${senderEmail}
   occupation: ${occupation}
   subject: ${subject}
   text: ${text} `
