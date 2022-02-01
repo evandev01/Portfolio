@@ -29,9 +29,7 @@ const RusticModal = props => {
           Node.js, React.js, Redux, Express, PayPal API, Sendgrid API, CSS,
           Pixelmator graphics software
         </p>
-        <a id='github' href='https://github.com/evandev01/rusticliving'>
-          GitHub Repo
-        </a>
+        <p>GitHub Repo unavailable due to proprietary restrictions</p>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
