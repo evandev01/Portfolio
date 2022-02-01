@@ -52,8 +52,7 @@ const About = () => {
                     <br />
                     <br />
                     I am passionate about building modern, intuitive and dynamic
-                    applications that are appealing to both casual users and
-                    professional clients.
+                    applications.
                     <br />
                     <br />
                     My top skills include...
@@ -61,23 +60,30 @@ const About = () => {
                     <br />
                     Front-end:
                     <br />
-                    React.js, JavaScript, Redux, Node.js, HTML, CSS, Bootstrap
-                    libraries, and Graphic Design.
+                    Node.js, React.js, Redux, JavaScript, PHP, HTML, CSS,
+                    Bootstrap Libraries, and Graphic Design.
                     <br />
                     <br />
                     Back-end:
                     <br />
-                    Express, Node.js, Sequelize, MySQL, MongoDB
+                    Express, Sequelize, MySQL, MongoDB
                     <br />
                     <br />
-                    I have experience with client/server integration, and I
-                    enjoy working independently and in collaboration as part of
-                    a development team in an agile environment.
+                    Other:
+                    <br />
+                    WordPress development, maintenance, plugins, CPanel
+                    management
+                    <br />
+                    <br />
+                    I have experience with client/server integration, utilizing
+                    MySQL/NoSQL databases to manage data. I enjoy working both
+                    independently and in collaboration as part of a development
+                    team in an agile environment.
                     <br />
                     <br />
                     Please check out some of my applications on my portfolio
-                    page with many more to come and feel free to message me via
-                    the contact page or through
+                    page with many more to come and feel free to{' '}
+                    <a href='/contact'>message me</a> or visit
                     <a href='https://www.linkedin.com/in/evan-bero-692b69123/'>
                       {' '}
                       LinkedIn{' '}
@@ -100,9 +106,6 @@ const About = () => {
                 src={Photo}
                 alt='Photo of Evan Bero'
               />
-            </Row>
-            <Row className='justify-content-md-center py-3'>
-              <a href={`mailto:evanbero@evandev.com`}>Contact</a>
             </Row>
           </Container>
         </Jumbotron>
