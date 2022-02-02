@@ -1,5 +1,5 @@
-import React from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import React from 'react'
+import { Modal, Button } from 'react-bootstrap'
 
 const RedeemerModal = props => {
   return (
@@ -25,14 +25,14 @@ const RedeemerModal = props => {
           Pixelmator graphics software
         </p>
         <a id='github' href='https://github.com/evandev01/Redeemer'>
-          GitHub Repo
+          GitHub
         </a>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
-  );
-};
+  )
+}
 
-export default RedeemerModal;
+export default RedeemerModal
