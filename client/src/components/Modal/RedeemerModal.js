@@ -24,7 +24,7 @@ const RedeemerModal = props => {
           Node.js, React.js, JavaScript, React-Bootstrap, HTML5, CSS3,
           Pixelmator graphics software
         </p>
-        <a id='github' href='https://github.com/evandev01/Redeemer'>
+        <a id='github' href='https://github.com/evandev01/redeemer_v2.0'>
           GitHub
         </a>
       </Modal.Body>
