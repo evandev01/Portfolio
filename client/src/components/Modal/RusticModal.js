@@ -26,8 +26,8 @@ const RusticModal = props => {
         <p>Owner may view, create, edit and delete products and users</p>
         <h6>Technologies:</h6>
         <p>
-          Node.js, React.js, Redux, Express, PayPal API, Sendgrid API, CSS,
-          Pixelmator graphics software
+          Node.js, React.js, Redux, JavaScript, React-Bootstrap, Express, PayPal
+          API, Sendgrid API, CSS, Pixelmator graphics software
         </p>
         <a id='github' href='https://github.com/evandev01/rusticliving'>
           GitHub
